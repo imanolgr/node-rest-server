@@ -1,13 +1,16 @@
 {
     "name": "07-restserver",
     "version": "1.0.0",
-    "description": "",
+    "description": "Test NodeJS",
     "main": "index.js",
     "scripts": {
         "start": "node server/server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "",
+    "engines": {
+        "node": "13.11.0"
+    },
+    "author": "Imanol A. Prados",
     "license": "ISC",
     "dependencies": {
         "bcrypt": "^4.0.1",
@@ -17,5 +20,17 @@
         "mongoose": "^5.9.6",
         "mongoose-unique-validator": "^2.0.3",
         "underscore": "^1.9.2"
-    }
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/imanolgr/node-rest-server.git"
+    },
+    "keywords": [
+        "NodeJS"
+    ],
+    "bugs": {
+        "url": "https://github.com/imanolgr/node-rest-server/issues"
+    },
+    "homepage": "https://github.com/imanolgr/node-rest-server#readme"
 }
