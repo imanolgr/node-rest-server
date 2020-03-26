@@ -15,7 +15,7 @@ let urlDB;
 if (process.env.NODE_ENV === 'dev') {
     urlDB = 'mongodb://localhost:27017/cafe';
 } else {
-    urlDB = 'mongodb+srv://imanolgr:NodeJS@cafe-xbiwy.mongodb.net/cafe';
+    urlDB = process.env.MONGO_URL;
 }
 console.log('guardamos', urlDB);
 process.env.URLDB = urlDB; //Nos lo hemos inventado
