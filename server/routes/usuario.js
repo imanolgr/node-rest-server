@@ -25,6 +25,8 @@ app.get('/usuario', function(req, res) {
                 });
             }
 
+            console.log('Estos son los usuarios', usuarios);
+
             Usuario.countDocuments({ estado: true /* Aquí dentro se mete el filtro que deberá ser igual que arriba. Ejemplo google: true */ }, (err, cantidad) => {
                 res.json({
                     ok: true,
