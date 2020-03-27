@@ -4,12 +4,15 @@ const bcrypt = require('bcrypt');
 
 const Usuario = require('../models/usuario');
 
+const { verificarToken, verificarAdminRole } = require('../middlewares/autenticacion');
+
 const app = express();
 
 const _ = require('underscore');
 
 
-app.get('/usuario', function(req, res) {
+app.get('/usuario', verificarToken, (req, res) => {
+
 
     let desde = Number(req.query.desde) || 0; //Registros desde , hasta
     let limite = Number(req.query.limite) || 5; //Limite de registros
@@ -40,7 +43,7 @@ app.get('/usuario', function(req, res) {
 
 });
 
-app.post('/usuario', function(req, res) {
+app.post('/usuario', [verificarToken, verificarAdminRole], (req, res) => {
 
     let body = req.body;
 
@@ -72,7 +75,7 @@ app.post('/usuario', function(req, res) {
 
 });
 
-app.put('/usuario/:id', function(req, res) {
+app.put('/usuario/:id', [verificarToken, verificarAdminRole], (req, res) => {
 
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']); //Pasamos que campos queremos modificar
@@ -95,7 +98,7 @@ app.put('/usuario/:id', function(req, res) {
 
 });
 
-app.delete('/usuario/:id', function(req, res) {
+app.delete('/usuario/:id', [verificarToken, verificarAdminRole], (req, res) => {
 
 
     let id = req.params.id;

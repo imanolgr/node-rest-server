@@ -9,6 +9,7 @@ mongoose.set('useUnifiedTopology', true);
 
 const express = require('express');
 const app = express();
+
 const bodyParser = require('body-parser');
 
 
@@ -19,7 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //parse application/json
 app.use(bodyParser.json());
 
-app.use(require('./routes/usuario'));
+//Configuracion global de rutas
+app.use(require('./routes/index.js'));
 
 app.get('/', (req, res) => {
     res.json('Hola Mundo');
