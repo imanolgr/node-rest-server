@@ -5,6 +5,7 @@ const { verificarToken } = require('../middlewares/autenticacion')
 let app = express();
 
 let Producto = require('../models/producto');
+let Usuario = require('../models/usuario');
 
 
 //====================

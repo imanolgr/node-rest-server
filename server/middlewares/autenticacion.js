@@ -19,6 +19,29 @@ let verificarToken = (req, res, next) => {
         }
 
         req.usuario = decoded.usuario;
+        next(); //Si no llamaramos a next se quedaría congelado ahí y no seguiria las funciones
+    })
+}
+
+// =======================
+// Verificación del Token IMG
+// =======================
+
+let verificarTokenImg = (req, res, next) => { //Si no llamaramos a next se quedaría congelado ahí
+
+    let token = req.query.token;
+
+    jwt.verify(token, process.env.SEED, (err, decoded) => {
+        if (err) {
+            return res.status(401).json({
+                ok: false,
+                err: {
+                    message: 'Token no válido'
+                }
+            });
+        }
+
+        req.usuario = decoded.usuario;
         next();
     })
 }
@@ -49,5 +72,6 @@ let verificarAdminRole = (req, res, next) => {
 
 module.exports = {
     verificarToken,
+    verificarTokenImg,
     verificarAdminRole
 }
